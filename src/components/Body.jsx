@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listofRestaurant, setListofRestaurant] = useState([]);
@@ -26,11 +27,19 @@ const Body = () => {
     setfilteredRes(json.data?.cards[2]?.data?.data?.cards);
   };
 
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false) {
+    return (
+      <h1>Looks like you're Offline, please check your internet connection </h1>
+    );
+  }
+
   // conditional rendering
   return listofRestaurant.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
+    <div className={styles.body}>
       <div>
         <div className={styles.search_box}>
           <input
@@ -53,7 +62,7 @@ const Body = () => {
           </button>
         </div>
         <button
-          className="filter"
+          className={styles.filter}
           onClick={() => {
             const filteredData = listofRestaurant.filter(
               (res) => res.data.avgRating > 4

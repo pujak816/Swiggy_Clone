@@ -24,26 +24,45 @@
   cursor: pointer;
 }
 .logIn:hover {
-  background-color: darkblue;
+  background-color: #fff;
+  color: rgb(229, 130, 95);
+  box-shadow: rgb(137, 137, 137) 0 0 4px;
+}
+.search_box input {
+  box-shadow: rgb(137, 137, 137) 0 0 4px;
+  background-color: aliceblue;
+  margin: 10px;
+  width: 20%;
+  border-radius: 4px;
+  padding: 4px;
+}
+.filter {
+  background-color: rgb(229, 130, 95);
+  border-radius: 5px;
+  padding: 3px 6px;
+  margin: 10px;
   color: #fff;
 }
-
+.filter:hover {
+  background-color: #fff;
+  color: rgb(229, 130, 95);
+  box-shadow: rgb(137, 137, 137) 0 0 4px;
+}
 .res_cards_container {
   margin-bottom: 75px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 .res_cards {
-  width: 258px;
+  max-width: 320px;
+  height: 360px;
   margin: 14px;
   padding: 20px 20px 57px;
   border: 1px solid #fff;
 }
-.res_cards a {
-  text-decoration: none;
-  background: #fff;
-  margin: -20px -20px -41px;
-}
+
 .res_cards:hover {
   background-color: #fff;
   box-shadow: rgb(213, 212, 212) 0 0 4px 1px;
@@ -52,11 +71,13 @@
   display: flex;
   flex-direction: column;
 }
+/* .res_cards_img {
+  width;
+} */
 .res_cards_img img {
   background: #eef0f5;
-  width: 254px;
-  height: 160px;
-  position: relative;
+  /* height: 160px; */
+  /* position: relative; */
 }
 .res_cards_title {
   margin-top: 14px;
