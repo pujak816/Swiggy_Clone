@@ -9,7 +9,7 @@ import RootLayout from "./layouts/RootLayout";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
-import SearchRes from "./pages/SearchRes";
+import SearchRes from "./components/SearchRes";
 import {
   createBrowserRouter,
   createRoutesFromElements,

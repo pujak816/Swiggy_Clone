@@ -1,7 +1,7 @@
 import { useState } from "react";
 // import { FETCH_RESDATA } from "../utils/helper";
 import { Link } from "react-router-dom";
-import RestaurantCards from "../components/RestaurantCards";
+import RestaurantCards from "./RestaurantCards";
 import useRestaurantData from "../utils/useRestaurantData";
 
 const SearchRes = () => {
