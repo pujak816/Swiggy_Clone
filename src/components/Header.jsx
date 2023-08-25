@@ -1,16 +1,17 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import SearchIcon from "@mui/icons-material/Search";
 
 const Header = () => {
   const [btnNameReact, setbtnNameReact] = useState("Log In");
 
-  const cartItems = useSelector((store) => store.cart.items);
-  // console.log(cartItems);
+  // Subscribing to the store using a selector : useSelector()
+  const cart = useSelector((store) => store.cart);
 
   return (
-    <div className="flex justify-between px-8 bg-orange-50 shadow-lg">
-      <div className="{styles.logo_container}">
+    <div className="flex justify-between px-8 bg-white shadow-lg fixed w-full z-10">
+      <div>
         <img
           className="w-40 p-2"
           src="https://upload.wikimedia.org/wikipedia/en/thumb/1/12/Swiggy_logo.svg/2560px-Swiggy_logo.svg.png"
@@ -18,24 +19,30 @@ const Header = () => {
           width="100px"
         />
       </div>
-      <div className="{styles.nav_items}">
-        <ul className="flex p-4 gap-8 items-center">
+      <div>
+        <ul className="flex p-4 gap-8 items-center font-semibold text-[#435B66]">
           <li>
-            <Link to="/grocery">Grocery</Link>{" "}
+            <NavLink to="/search" className="flex items-center ">
+              <SearchIcon sx={{ color: "#435B66", fontSize: "22px" }} /> Search
+            </NavLink>{" "}
           </li>
           <li>
-            <Link to="/">Home</Link>{" "}
+            <NavLink to="/grocery">Grocery</NavLink>{" "}
           </li>
           <li>
-            <Link to="/about">About US</Link>{" "}
+            <NavLink to="/">Home</NavLink>{" "}
           </li>
           <li>
-            <Link to="/contact">Contact US</Link>
+            <NavLink to="/about">About US</NavLink>{" "}
           </li>
           <li>
-            <Link to="/cart">
-              Cart <span className="text-green-400">{cartItems.length}</span>{" "}
-            </Link>
+            <NavLink to="/contact">Contact US</NavLink>
+          </li>
+          <li>
+            <NavLink to="/cart">
+              Cart{" "}
+              <span className="text-green-400">{cart.cartTotalQuantity}</span>{" "}
+            </NavLink>
           </li>
           <button
             className="px-4 py-1  bg-orange-400 rounded-lg text-white hover:bg-white hover:text-orange-400 "

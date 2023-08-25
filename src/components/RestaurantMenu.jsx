@@ -1,22 +1,19 @@
-import React from "react";
-import Shimmer from "./Shimmer";
+import React, { useState } from "react";
+import ResShimmer from "./ResShimmer";
 import { useParams } from "react-router-dom";
 import { useRestaurantMenu } from "../utils/useRestaurantMenu";
-import { addItem } from "../utils/cartSlice";
-import { useDispatch } from "react-redux";
+import RestaurantCategory from "./RestaurantCategory";
+import StarIcon from "@mui/icons-material/Star";
+import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 
 export default function RestaurantMenu() {
   const { resId } = useParams(); // useParam return object
 
   const resInfo = useRestaurantMenu(resId);
 
-  const dispatch = useDispatch();
+  const [showIndex, setShowIndex] = useState(0);
 
-  const addMenuItem = (item) => {
-    dispatch(addItem(item));
-  };
-
-  if (resInfo === null) return <Shimmer />;
+  if (resInfo === null) return <ResShimmer />;
 
   const {
     name,
@@ -24,53 +21,63 @@ export default function RestaurantMenu() {
     costForTwo,
     avgRating,
     areaName,
+    locality,
     totalRatingsString,
-    cloudinaryImageId,
+    availabilityServiceabilityMessage,
   } = resInfo?.cards[0].card?.card?.info;
+  // console.log(resInfo);
 
-  const { itemCards } =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-  console.log(itemCards);
+  const categories =
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.["card"]?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+  // console.log(categories);
 
   return (
-    <div className="flex">
-      <div className="flex max-w-4xl m-5 mx-auto">
-        <div className="mx-10">
-          <h1>Restaurant ID: {resId}</h1>
-          <h1 className="text-2xl font-bold">{name}</h1>
-          <img
-            src={
-              "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-              cloudinaryImageId
-            }
-            alt="img"
-          />
-          <p>{cuisines.join(", ")}</p>
-          <p className="text-blue-500">{areaName}</p>
-          <h5>Rs.{costForTwo / 100} cost for two</h5>
-          <p className="text-green-300 bg-stone-700 w-8">{avgRating}</p>
-          <p>{totalRatingsString}</p>
+    <div className="pt-20">
+      <div className=" max-w-4xl m-5 mx-auto ">
+        <p className="text-xs">Restaurant ID: {resId}</p>
+
+        <div className="p-2 flex justify-between border-dotted border-b-2">
+          <div className="w-9/12 ">
+            <h1 className="text-xl font-bold">{name}</h1>
+            <p className="text-slate-500 text-sm">{cuisines.join(", ")}</p>
+            <p className="text-slate-500 text-sm">
+              {locality}
+              <span>, {areaName}</span>
+            </p>
+          </div>
+          <div className="">
+            <div className="text-green-300 p-2 border-b-2">
+              <StarIcon sx={{ fontSize: 18 }} />
+              {avgRating}
+            </div>
+            <div className="text-xs text-slate-500 font-semibold ">
+              {totalRatingsString}
+            </div>
+          </div>
+        </div>
+        <div className="p-2 py-4 border-b-2 my-4">
+          <p className="font-bold text-lg">
+            <CurrencyRupeeIcon sx={{ fontSize: 18 }} />
+            {costForTwo / 100} cost for two
+          </p>
+          <div>{availabilityServiceabilityMessage}</div>
         </div>
 
+        {/* categories accordians */}
         <div className="res_menu">
-          <h2 className="font-semibold mt-4">Menu</h2>
-          <ul>
-            {itemCards.map((item) => (
-              <li key={item.card.info.id}>
-                {item.card.info.name} - Rs.
-                {item.card.info.price / 100 ||
-                  item.card.info.defaultPrice / 100}
-                <div>
-                  <button
-                    className="bg-pink-800 text-white p-2"
-                    onClick={() => addMenuItem(item)}
-                  >
-                    Add Item
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
+          {categories.map((category, index) => (
+            //controlled component
+            <RestaurantCategory
+              key={category?.card?.card.title}
+              data={category?.card?.card}
+              showItems={index === showIndex ? true : false}
+              setShowIndex={() => setShowIndex(index)}
+            />
+          ))}
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FETCH_MENU_API } from "./contants";
+import { FETCH_MENU_API } from "./helper";
 
 export const useRestaurantMenu = (resId) => {
   const [resInfo, setresInfo] = useState(null); // state var returns an array

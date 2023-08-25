@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import Body from "./components/Body";
+// import Search from "./components/Search";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
@@ -7,8 +8,8 @@ import Cart from "./components/Cart";
 import RootLayout from "./layouts/RootLayout";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { Provider } from "react-redux";
-import store from "./utils/store";
-
+import appStore from "./utils/appStore";
+import SearchRes from "./pages/SearchRes";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -20,7 +21,7 @@ function App() {
   return (
     <>
       {" "}
-      <Provider store={store}>
+      <Provider store={appStore}>
         <RouterProvider router={appRouter} />
       </Provider>
     </>
@@ -33,9 +34,10 @@ const appRouter = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />} errorElement={<Error />}>
       <Route index element={<Body />} />
+      <Route path="search" element={<SearchRes />} />
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
-      <Route path="restaurants/:resId" element={<RestaurantMenu />} />
+      <Route path="restaurant/:resId" element={<RestaurantMenu />} />
       <Route path="cart" element={<Cart />} />
       <Route
         path="/grocery"

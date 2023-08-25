@@ -1,89 +1,94 @@
-import RestaurantCards from "./RestaurantCards";
-import styles from "./styles.module.css";
-import { useState, useEffect } from "react";
+import RestaurantCards, { withPromotedLabel } from "./RestaurantCards";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import FoodCarousel from "./FoodCarousel";
+import useRestaurantData from "../utils/useRestaurantData";
 
 const Body = () => {
-  const [listofRestaurant, setListofRestaurant] = useState([]);
-  const [filteredRes, setfilteredRes] = useState([]);
-  const [searchText, setsearchText] = useState("");
-
   //   console.log("body rendered")
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9566294&lng=77.70468230000002&page_type=DESKTOP_WEB_LISTING"
-    );
-
-    const json = await data.json();
-    console.log(json);
-    setListofRestaurant(json.data?.cards[2]?.data?.data?.cards); //optional chaining
-    setfilteredRes(json.data?.cards[2]?.data?.data?.cards);
-  };
+  const {
+    listofRestaurant,
+    filteredRes,
+    carouselData,
+    setfilteredRes,
+    noOfRestaurant,
+  } = useRestaurantData();
 
   const onlineStatus = useOnlineStatus();
-
   if (onlineStatus === false) {
     return (
       <h1>Looks like you're Offline, please check your internet connection </h1>
     );
   }
 
+  const PromotedRestaurantCard = withPromotedLabel(RestaurantCards);
+
   // conditional rendering
   return listofRestaurant.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className={styles.body}>
-      <div>
-        <div className={styles.search_box}>
-          <input
-            type="text"
-            value={searchText}
-            onChange={(e) => {
-              setsearchText(e.target.value);
-            }}
-          />
-          <button
-            onClick={() => {
-              const filteredRes = listofRestaurant.filter((res) =>
-                res.data.name.toLowerCase().includes(searchText.toLowerCase())
-              );
-              console.log(searchText);
-              setfilteredRes(filteredRes);
-            }}
-          >
-            Search
-          </button>
-        </div>
-        <button
-          className={styles.filter}
-          onClick={() => {
-            const filteredData = listofRestaurant.filter(
-              (res) => res.data.avgRating > 4
-            );
-            setfilteredRes(filteredData);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
+    <div className="pt-20">
+      <div className=" px-28">
+        <FoodCarousel bannerData={carouselData} />
       </div>
-      <div className={styles.res_cards_container}>
-        {filteredRes.map((restuarants) => {
-          return (
-            <Link
-              key={restuarants.data.id}
-              to={"/restaurants/" + restuarants.data.id}
+      <div>
+        <div className="res-cards_container pt-10 w-10/12 m-auto">
+          <h1 className="font-bold text-2xl ml-10 py-2">
+            Restaurants with online food delivery in Bangalore
+          </h1>
+          <div className="flex  pl-10">
+            <p className="hover:cursor-pointer bg-white border-2 py-1 px-2 text-sm rounded-3xl m-1 ">
+              {noOfRestaurant} Restaurants
+            </p>
+            <button
+              className="bg-white border-2 py-1 px-2 text-sm rounded-3xl m-1 "
+              onClick={() => {
+                const filteredData = listofRestaurant.filter(
+                  (res) => res.info.avgRating > 4
+                );
+                setfilteredRes(filteredData);
+              }}
             >
-              <RestaurantCards resData={restuarants} />
-            </Link>
-          );
-        })}
+              {" "}
+              Ratings 4.0+
+            </button>
+          </div>
+
+          <div className="flex flex-wrap justify-center">
+            {filteredRes.map((restuarant) => {
+              return (
+                <Link
+                  key={restuarant?.info.id}
+                  to={"/restaurant/" + restuarant?.info.id}
+                >
+                  {restuarant?.info.promoted ? (
+                    <PromotedRestaurantCard resData={restuarant?.info} />
+                  ) : (
+                    <RestaurantCards {...restuarant?.info} />
+                  )}
+                </Link>
+              );
+            })}
+
+            {/* shimmer  */}
+            {Array(1)
+              .fill("")
+              .map((e, index) => (
+                <div
+                  key={index}
+                  className=" animate-pulse w-[254px] h-[220px] p-3 m-5 border border-slate-200 rounded-md bg-[#fdfdfd]"
+                >
+                  <div className="animate-pulse w-full h-[135px] border border-neutral-300 rounded-md bg-gray-100"></div>
+
+                  <p class="leading-relaxed mt-4 mb-2 w-full h-3 animate-pulse bg-gray-200 rounded-sm"></p>
+                  <p class="leading-relaxed mt-2 mb-1 w-2/3 h-3 animate-pulse bg-gray-200 rounded-sm"></p>
+                  <p class="leading-relaxed  w-1/5 h-3 animate-pulse bg-gray-200 rounded-sm"></p>
+                </div>
+              ))}
+          </div>
+        </div>
       </div>
     </div>
   );

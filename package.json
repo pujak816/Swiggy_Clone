@@ -1,22 +1,31 @@
 {
   "name": "new_app",
   "version": "0.1.0",
+  "homepage": "https://pujak816.github.io/swiggy_clone",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.1",
+    "@mui/material": "^5.14.1",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "chart.js": "^4.3.0",
+    "file-saver": "^2.0.5",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
+    "tailwind-scrollbar-hide": "^1.1.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -45,6 +54,7 @@
     "@babel/preset-env": "^7.22.5",
     "@testing-library/react": "^14.0.0",
     "babel-jest": "^29.5.0",
+    "gh-pages": "^6.0.0",
     "jest": "^27.5.1",
     "tailwindcss": "^3.3.2"
   }
