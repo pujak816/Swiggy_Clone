@@ -1,6 +1,6 @@
 import React from "react";
-import { addItem, decreaseItem } from "../utils/cartSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/helper";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 
