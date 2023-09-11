@@ -11,7 +11,7 @@ const SearchRes = () => {
 
   const { listofRestaurant, filteredRes, setfilteredRes } = useRestaurantData();
   return (
-    <div className="pt-20 bg-violet-200 p-20">
+    <div className="pt-20 p-20">
       <h1> Search Here</h1>
       <div className="search_btn">
         <input
