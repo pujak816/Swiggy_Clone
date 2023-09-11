@@ -21,21 +21,21 @@ const Header = () => {
       </div>
       <div>
         <ul className="flex p-4 gap-8 items-center font-semibold text-[#435B66]">
-          <li>
+          <li className="hidden">
             <NavLink to="/search" className="flex items-center ">
               <SearchIcon sx={{ color: "#435B66", fontSize: "22px" }} /> Search
             </NavLink>{" "}
           </li>
-          <li>
+          <li className="hidden">
             <NavLink to="/grocery">Grocery</NavLink>{" "}
           </li>
           <li>
             <NavLink to="/">Home</NavLink>{" "}
           </li>
-          <li>
+          <li className="hidden">
             <NavLink to="/about">About US</NavLink>{" "}
           </li>
-          <li>
+          <li className="hidden">
             <NavLink to="/contact">Contact US</NavLink>
           </li>
           <li>
