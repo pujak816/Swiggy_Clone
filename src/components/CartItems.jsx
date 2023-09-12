@@ -19,7 +19,6 @@ const CartItems = ({ item }) => {
 
   const handleDecrease = (item) => {
     dispatch(decreaseItem(item));
-    // console.log("clicked");
   };
 
   return (

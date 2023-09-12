@@ -1,13 +1,11 @@
 import RestaurantCards, { withPromotedLabel } from "./RestaurantCards";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-import useOnlineStatus from "../utils/useOnlineStatus";
+import useOnlineStatus from "../hooks/useOnlineStatus";
 import FoodCarousel from "./FoodCarousel";
-import useRestaurantData from "../utils/useRestaurantData";
+import useRestaurantData from "../hooks/useRestaurantData";
 
 const Body = () => {
-  //   console.log("body rendered")
-
   const {
     listofRestaurant,
     filteredRes,
@@ -25,7 +23,6 @@ const Body = () => {
 
   const PromotedRestaurantCard = withPromotedLabel(RestaurantCards);
 
-  // conditional rendering
   return listofRestaurant.length === 0 ? (
     <Shimmer />
   ) : (

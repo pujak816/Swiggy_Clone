@@ -9,7 +9,6 @@ import { clearCart, calculateTotal } from "../utils/cartSlice";
 export default function Cart() {
   const cartItems = useSelector((store) => store.cart.items);
   const cart = useSelector((store) => store.cart);
-  // console.log(cart);
   const itemTotal = cart.cartTotalAmount;
 
   const platformFee = 2;
@@ -27,7 +26,7 @@ export default function Cart() {
   return (
     <div className="pt-16">
       {cartItems.length === 0 ? (
-        <div className="empty-cart pt-36 sm:pt-48 lg:pt-28">
+        <div className="empty-cart pt-36 sm:pt-48 lg:pt-16">
           <div className=" text-center p-2 sm:p-8 w-4/5 sm:w-6/12 m-auto shadow-xl rounded-md">
             <img
               src="	https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0"

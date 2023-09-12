@@ -5,13 +5,10 @@ import { CDN_URL } from "../utils/helper";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 
 export default function CategoryItemList({ items }) {
-  console.log(items);
-
   const dispatch = useDispatch();
 
   const handleAdd = (item) => {
     dispatch(addItem(item));
-    console.log(item);
   };
 
   return (

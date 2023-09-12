@@ -1,12 +1,9 @@
 import { useState } from "react";
-// import { FETCH_RESDATA } from "../utils/helper";
 import { Link } from "react-router-dom";
 import RestaurantCards from "./RestaurantCards";
-import useRestaurantData from "../utils/useRestaurantData";
+import useRestaurantData from "../hooks/useRestaurantData";
 
 const SearchRes = () => {
-  // const [listofRestaurant, setListofRestaurant] = useState([]);
-  // const [filteredRes, setfilteredRes] = useState([]);
   const [searchText, setsearchText] = useState("");
 
   const { listofRestaurant, filteredRes, setfilteredRes } = useRestaurantData();
@@ -26,7 +23,6 @@ const SearchRes = () => {
             const filteredRes = listofRestaurant.filter((res) =>
               res.info.name.toLowerCase().includes(searchText.toLowerCase())
             );
-            console.log(searchText);
             setfilteredRes(filteredRes);
           }}
         >

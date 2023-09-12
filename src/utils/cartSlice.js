@@ -57,8 +57,6 @@ const cartSlice = createSlice({
           const { itemQuantity } = item;
 
           const subTotal = itemPrice.toFixed(1) * itemQuantity;
-          // console.log(subTotal);
-
           cartTotal.total += subTotal;
           cartTotal.quantity += itemQuantity;
 
@@ -72,16 +70,6 @@ const cartSlice = createSlice({
     },
   },
 });
-
-const checkOutSlice = createSlice({
-  name: "checkOut",
-  initialState: {},
-  reducers: {
-    checkOut: (state, action) => {},
-  },
-});
-
-// export two things: actions and reducer
 
 export const { addItem, decreaseItem, clearCart, calculateTotal } =
   cartSlice.actions;

@@ -4,19 +4,13 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export default function FoodCarousel({ bannerData }) {
-  console.log(bannerData);
-  // console.log(bannerData.length);
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevImg = () => {
     setCurrentIndex(currentIndex - 1);
-    console.log("previous");
   };
   const nextimg = () => {
     setCurrentIndex(currentIndex + 1);
-
-    console.log("Next");
   };
 
   return (

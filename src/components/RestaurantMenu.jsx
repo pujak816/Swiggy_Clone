@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ResShimmer from "./ResShimmer";
 import { useParams } from "react-router-dom";
-import { useRestaurantMenu } from "../utils/useRestaurantMenu";
+import { useRestaurantMenu } from "../hooks/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
 import StarIcon from "@mui/icons-material/Star";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
@@ -25,7 +25,6 @@ export default function RestaurantMenu() {
     totalRatingsString,
     availabilityServiceabilityMessage,
   } = resInfo?.cards[0].card?.card?.info;
-  // console.log(resInfo);
 
   const categories =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -33,7 +32,6 @@ export default function RestaurantMenu() {
         c.card?.["card"]?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
-  // console.log(categories);
 
   return (
     <div className="pt-20">
@@ -68,7 +66,7 @@ export default function RestaurantMenu() {
         </div>
 
         {/* categories accordians */}
-        <div className="res_menu">
+        <div className="resMenu">
           {categories.map((category, index) => (
             //controlled component
             <RestaurantCategory

@@ -3,7 +3,6 @@ const resDataUurl =
   encodeURIComponent(
     "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9566294&lng=77.70468230000002&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
   );
-
 export const FETCH_RESDATA = resDataUurl;
 
 const menuApiUrl =

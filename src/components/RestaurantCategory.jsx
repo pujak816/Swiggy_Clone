@@ -2,7 +2,6 @@ import CategoryItemList from "./CategoryItemList";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
-  // console.log(data);
   // const [showItem, setShowItem] = useState(false);
 
   const handleClick = () => {
