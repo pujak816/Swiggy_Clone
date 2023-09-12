@@ -1,1 +1,1 @@
-Swiggy Clone - https://swiggy-clone-puja.vercel.app/
+check out here - https://foodapp-clone-puja.vercel.app/
