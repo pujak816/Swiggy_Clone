@@ -10,17 +10,17 @@ const Header = () => {
   const cart = useSelector((store) => store.cart);
 
   return (
-    <div className="flex justify-between px-8 bg-white shadow-lg fixed w-full z-10">
-      <div>
+    <div className="flex justify-between px-2 sm:px-8 bg-white shadow-lg fixed w-full z-10">
+      <div className="flex justify-center items-center">
         <img
-          className="w-40 p-2"
+          className=" sm:w-40 sm:p-2"
           src="https://upload.wikimedia.org/wikipedia/en/thumb/1/12/Swiggy_logo.svg/2560px-Swiggy_logo.svg.png"
           alt="logo"
           width="100px"
         />
       </div>
       <div>
-        <ul className="flex p-4 gap-8 items-center font-semibold text-[#435B66]">
+        <ul className="flex p-2 sm:p-4 gap-4 sm:gap-8 items-center font-semibold text-[#435B66]">
           <li className="hidden">
             <NavLink to="/search" className="flex items-center ">
               <SearchIcon sx={{ color: "#435B66", fontSize: "22px" }} /> Search

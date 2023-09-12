@@ -20,11 +20,13 @@ export default function CategoryItemList({ items }) {
         {items.map((item) => (
           <div
             Key={item.card.info.id}
-            className="p-6 m-2 border-b-2 border-slate-200 flex justify-between"
+            className="p-1 sm:p-6 m-2 border-b-2 border-slate-200 flex justify-between"
           >
             <div className="text-left w-9/12">
-              <div className="font-semibold text-lg">{item.card.info.name}</div>
-              <div>
+              <div className="font-semibold text-sm sm:text-lg">
+                {item.card.info.name}
+              </div>
+              <div className="text-sm sm:text-lg ">
                 <CurrencyRupeeIcon
                   sx={{
                     fontSize: 16,

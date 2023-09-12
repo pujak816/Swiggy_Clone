@@ -9,14 +9,9 @@ const RestaurantCards = ({
   costForTwo,
   areaName,
 }) => {
-  //   const { resData } = props;
-  // const{ cloudinaryImageId, name, avgRating, cuisines, costForTwo, areaName }  =
-  //   resData;
-  // console.log(resData);
-
   return (
     <>
-      <div className="max-w-[320px] m-3 p-5 rounded-lg hover:shadow-lg ">
+      <div className="sm:w-[260px] md:max-w-[360px] lg:w-[360px] my-4 px-4 rounded-lg hover:shadow-lg ">
         <div className="flex-col">
           <img
             src={CDN_URL + cloudinaryImageId}

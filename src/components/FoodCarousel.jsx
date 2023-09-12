@@ -21,8 +21,10 @@ export default function FoodCarousel({ bannerData }) {
 
   return (
     <>
-      <div className="flex justify-between px-2 ">
-        <h1 className="font-bold text-2xl p-3 ">Best Offers for you</h1>
+      <div className="flex justify-between ">
+        <h1 className="font-bold text-xs py-3  sm:text-2xl">
+          Best Offers for you
+        </h1>
         <div className="flex items-center   ">
           {currentIndex !== 0 && (
             <button
@@ -52,7 +54,7 @@ export default function FoodCarousel({ bannerData }) {
               key={index}
               src={BANNER_CDN_URL + item.imageId}
               alt={`img ${index}`}
-              className={`w-2/5 m-2 ${index === 0 ? "ml-0" : ""}`}
+              className={`w-4/5 sm:w-2/5 m-2 ${index === 0 ? "ml-0" : ""}`}
             />
           ))}
         </div>

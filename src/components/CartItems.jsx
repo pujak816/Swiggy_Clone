@@ -24,8 +24,8 @@ const CartItems = ({ item }) => {
 
   return (
     <>
-      <div className="flex py-4 p-10 overflow-y-auto bg-gray-100 ">
-        <div className=" flex w-3/4  items-center  ">
+      <div className="flex py-4 sm:p-10 overflow-y-auto bg-gray-100 ">
+        <div className=" flex lg:w-3/4  items-center  ">
           <img
             className="max-w-[100px]  mr-4 rounded-sm shadow-lg"
             src={CDN_URL + imageId}
@@ -35,7 +35,7 @@ const CartItems = ({ item }) => {
           <p>{desciption}</p>
         </div>
 
-        <div className="border m-4 px-1 border-slate-400  w-1/6 flex justify-center items-center gap-5 font-bold ">
+        <div className="border m-4 px-1 border-slate-400  lg:w-1/6 flex justify-center items-center gap-5 font-bold ">
           <button className="text-red-600" onClick={() => handleDecrease(item)}>
             -
           </button>
@@ -48,13 +48,9 @@ const CartItems = ({ item }) => {
           </button>
         </div>
 
-        <div className="w-1/4 flex flex-col justify-center text-right pr-4">
+        <div className="lg:w-1/4 flex flex-col justify-center text-right pr-4">
           <div>
             <p className="font-semibold text-gray-600 text-sm ">
-              {/* <span className="text-green-600 hidden ">
-                <p> ₹{itemPrice}</p>
-                <p>{item.itemQuantity} </p>
-              </span> */}
               ₹{calculateSubtotal().toFixed(2)}
             </p>
           </div>

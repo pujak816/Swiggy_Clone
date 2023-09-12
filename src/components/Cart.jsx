@@ -25,10 +25,10 @@ export default function Cart() {
   };
 
   return (
-    <div className=" pt-16">
+    <div className="pt-16">
       {cartItems.length === 0 ? (
-        <div className="empty-cart">
-          <div className=" text-center p-8 w-6/12 m-auto shadow-xl rounded-md">
+        <div className="empty-cart pt-36 sm:pt-48 lg:pt-28">
+          <div className=" text-center p-2 sm:p-8 w-4/5 sm:w-6/12 m-auto shadow-xl rounded-md">
             <img
               src="	https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0"
               alt="emptyImg"
@@ -40,7 +40,7 @@ export default function Cart() {
             </p>
             <div className="text-white font-semibold bg-orange-500 w-2/3 m-auto p-1 mt-4">
               <Link to="/">
-                <p>SEE RESTAURANTS NEAR YOU</p>
+                <p className="text-xs lg:text-base">SEE RESTAURANTS NEAR YOU</p>
               </Link>
             </div>
           </div>
@@ -48,7 +48,7 @@ export default function Cart() {
       ) : (
         <div className="flex justify-between bg-gray-200">
           <CartLeft />
-          <div className=" w-2/4 m-10 bg-white relative  h-full">
+          <div className="w-full sm:w-3/4 lg:w-2/4 lg:m-10 bg-white relative  h-full">
             <h1 className="font-bold p-6 mx-7 text-black text-2xl relative">
               Cart
               <span className="text-gray-500 text-sm pb-2 absolute top-8 left-20">

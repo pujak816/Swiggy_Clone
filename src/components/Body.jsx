@@ -30,12 +30,12 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="pt-20">
-      <div className=" px-28">
+      <div className="px-2 sm:px-28">
         <FoodCarousel bannerData={carouselData} />
       </div>
-      <div>
-        <div className="res-cards_container pt-10 w-10/12 m-auto">
-          <h1 className="font-bold text-2xl ml-10 py-2">
+      <div className="sm:mx-16">
+        <div className="res-cards_container pt-10  ">
+          <h1 className="font-bold sm:text-2xl ml-10 py-2">
             Restaurants with online food delivery in Bangalore
           </h1>
           <div className="flex  pl-10">
