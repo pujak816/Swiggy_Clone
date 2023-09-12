@@ -4,7 +4,7 @@ const Shimmer = () => {
       <div className=" bg-[#171a29] h-[344px] w-full flex flex-col pt-14">
         <div class="flex justify-center items-center w-[50px] h-[50px] mt-28 relative self-center">
           <div class="absolute -inset-4 border-4 border-gray-300   rounded-full animate-pulse"></div>
-          <div class="absolute -inset-4 border-4 border-t-transparent border-gray-900 rounded-full animate-spin animate-pulse"></div>
+          <div class="absolute -inset-4 border-4 border-t-transparent border-gray-900 rounded-full animate-spin "></div>
           <img
             class="absolute inset-0 m-auto rounded-full"
             src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/icecream_wwomsa"
