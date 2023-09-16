@@ -6,7 +6,6 @@ import SearchIcon from "@mui/icons-material/Search";
 const Header = () => {
   const [btnNameReact, setbtnNameReact] = useState("Log In");
 
-  // Subscribing to the store using a selector : useSelector()
   const cart = useSelector((store) => store.cart);
 
   return (
@@ -26,18 +25,11 @@ const Header = () => {
               <SearchIcon sx={{ color: "#435B66", fontSize: "22px" }} /> Search
             </NavLink>{" "}
           </li>
-          <li className="hidden">
-            <NavLink to="/grocery">Grocery</NavLink>{" "}
-          </li>
+
           <li>
             <NavLink to="/">Home</NavLink>{" "}
           </li>
-          <li className="hidden">
-            <NavLink to="/about">About US</NavLink>{" "}
-          </li>
-          <li className="hidden">
-            <NavLink to="/contact">Contact US</NavLink>
-          </li>
+
           <li>
             <NavLink to="/cart">
               Cart{" "}
