@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import SearchIcon from "@mui/icons-material/Search";
 
 const Header = () => {
-  const [btnNameReact, setbtnNameReact] = useState("Log In");
+  // const [btnNameReact, setbtnNameReact] = useState("Log In");
 
   const cart = useSelector((store) => store.cart);
 
@@ -23,11 +23,11 @@ const Header = () => {
           <li className="hidden">
             <NavLink to="/search" className="flex items-center ">
               <SearchIcon sx={{ color: "#435B66", fontSize: "22px" }} /> Search
-            </NavLink>{" "}
+            </NavLink>
           </li>
 
           <li>
-            <NavLink to="/">Home</NavLink>{" "}
+            <NavLink to="/">Home</NavLink>
           </li>
 
           <li>
@@ -36,16 +36,19 @@ const Header = () => {
               <span className="text-green-400">{cart.cartTotalQuantity}</span>{" "}
             </NavLink>
           </li>
-          <button
-            className="px-4 py-1  bg-orange-400 rounded-lg text-white hover:bg-white hover:text-orange-400 "
-            onClick={() => {
-              btnNameReact === "Log In"
-                ? setbtnNameReact("Log Out")
-                : setbtnNameReact("Log In");
-            }}
-          >
-            {btnNameReact}
-          </button>
+          <NavLink to="/login">
+            <button
+              className="px-4 py-1  bg-orange-400 rounded-lg text-white hover:bg-gray-100 hover:text-orange-400 "
+              // onClick={() => {
+              //   btnNameReact === "Log In"
+              //     ? setbtnNameReact("Log Out")
+              //     : setbtnNameReact("Log In");
+              // }}
+            >
+              {/* {btnNameReact} */}
+              Log In
+            </button>
+          </NavLink>
         </ul>
       </div>
     </div>

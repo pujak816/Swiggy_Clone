@@ -2,6 +2,7 @@ import React from "react";
 import Body from "./components/Body";
 import Error from "./components/Error";
 import Cart from "./components/Cart";
+import Login from "./components/Login";
 import RootLayout from "./layouts/RootLayout";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { Provider } from "react-redux";
@@ -31,6 +32,7 @@ const appRouter = createBrowserRouter(
       <Route path="search" element={<SearchRes />} />
       <Route path="restaurant/:resId" element={<RestaurantMenu />} />
       <Route path="cart" element={<Cart />} />
+      <Route path="login" element={<Login />} />
     </Route>
   )
 );
