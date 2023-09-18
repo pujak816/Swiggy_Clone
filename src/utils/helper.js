@@ -17,3 +17,6 @@ export const CDN_URL =
 
 export const BANNER_CDN_URL =
   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_850,h_504/";
+
+export const SEARCH_CDN_URL =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_112,h_112,c_fill/";

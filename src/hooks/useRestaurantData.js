@@ -5,9 +5,10 @@ const useRestaurantData = () => {
   const [listofRestaurant, setListofRestaurant] = useState([]);
   const [filteredRes, setfilteredRes] = useState([]);
   const [carouselData, setCarouselData] = useState([]);
-  const [noOfRestaurant, setNoOfRestaurant] = useState(0);
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
-  let allRestaurant = [];
+  // let allRestaurant = [];
 
   useEffect(() => {
     fetchData();
@@ -17,20 +18,23 @@ const useRestaurantData = () => {
     const data = await fetch(FETCH_RESDATA);
     const json = await data.json();
 
-    allRestaurant =
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.map(
-        (res) => res.info
-      );
-    console.log(allRestaurant);
+    // allRestaurant =
+    //   json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.map(
+    //     (res) => res.info
+    //   );
 
-    setListofRestaurant((prevRes) => [...prevRes, ...allRestaurant]);
+    setListofRestaurant(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
     setfilteredRes(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setCarouselData(
       json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
     );
-    setNoOfRestaurant(allRestaurant.length);
+    setSuggestions(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   return {
@@ -38,7 +42,11 @@ const useRestaurantData = () => {
     filteredRes,
     carouselData,
     setfilteredRes,
-    noOfRestaurant,
+    setShowSuggestions,
+    showSuggestions,
+    setSuggestions,
+    suggestions,
+    // allRestaurant,
   };
 };
 

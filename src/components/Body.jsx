@@ -11,8 +11,10 @@ const Body = () => {
     filteredRes,
     carouselData,
     setfilteredRes,
-    noOfRestaurant,
+    // allRestaurant,
   } = useRestaurantData();
+
+  console.log(filteredRes);
 
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false) {
@@ -21,9 +23,13 @@ const Body = () => {
     );
   }
 
+  const getAllRestaurant = () => {
+    setfilteredRes(listofRestaurant);
+  };
+
   const PromotedRestaurantCard = withPromotedLabel(RestaurantCards);
 
-  return listofRestaurant.length === 0 ? (
+  return filteredRes.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="pt-20">
@@ -36,19 +42,24 @@ const Body = () => {
             Restaurants with online food delivery in Bangalore
           </h1>
           <div className="flex  pl-10">
-            <p className="hover:cursor-pointer bg-white border-2 py-1 px-2 text-sm rounded-3xl m-1 ">
-              {noOfRestaurant} Restaurants
-            </p>
+            <button className="hover:cursor-pointer bg-white border-2 py-1 px-2 text-sm rounded-3xl m-1 ">
+              {filteredRes.length} Restaurants
+            </button>
+            <button
+              className="bg-white border-2 py-1 px-2 text-sm rounded-3xl m-1 "
+              onClick={getAllRestaurant}
+            >
+              All
+            </button>
             <button
               className="bg-white border-2 py-1 px-2 text-sm rounded-3xl m-1 "
               onClick={() => {
-                const filteredData = listofRestaurant.filter(
+                const filteredData = filteredRes.filter(
                   (res) => res.info.avgRating > 4
                 );
                 setfilteredRes(filteredData);
               }}
             >
-              {" "}
               Ratings 4.0+
             </button>
           </div>

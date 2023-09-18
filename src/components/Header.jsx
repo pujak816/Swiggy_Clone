@@ -20,7 +20,7 @@ const Header = () => {
       </div>
       <div>
         <ul className="flex p-2 sm:p-4 gap-4 sm:gap-8 items-center font-semibold text-[#435B66]">
-          <li className="hidden">
+          <li>
             <NavLink to="/search" className="flex items-center ">
               <SearchIcon sx={{ color: "#435B66", fontSize: "22px" }} /> Search
             </NavLink>
