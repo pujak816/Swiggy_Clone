@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -18,10 +19,20 @@ const cartSlice = createSlice({
       );
       if (itemIndexCheck >= 0) {
         state.items[itemIndexCheck].itemQuantity += 1;
+        toast.info(
+          `increased ${state.items[itemIndexCheck].card.info.name} quantity`,
+          {
+            position: "bottom-left",
+          }
+        );
       } else {
         const item = { ...action.payload, itemQuantity: 1 };
         state.items.push(item);
         state.cartTotalQuantity += 1;
+
+        toast.success(`${action.payload.card.info.name} added to cart`, {
+          position: "bottom-left",
+        });
 
         localStorage.setItem("cartItems", JSON.stringify(state.items));
       }
@@ -37,9 +48,22 @@ const cartSlice = createSlice({
       );
       if (state.items[itemIndexCheck].itemQuantity > 1) {
         state.items[itemIndexCheck].itemQuantity -= 1;
+        toast.info(
+          `decreased ${state.items[itemIndexCheck].card.info.name} quantity`,
+          {
+            position: "bottom-left",
+          }
+        );
       } else if ((state.items[itemIndexCheck].itemQuantity = 1)) {
         state.items = removeItem;
+        toast.info(
+          `removed ${state.items[itemIndexCheck].card.info.name} from cart`,
+          {
+            position: "bottom-left",
+          }
+        );
       }
+
       localStorage.setItem("cartItems", JSON.stringify(state.items));
     },
 
