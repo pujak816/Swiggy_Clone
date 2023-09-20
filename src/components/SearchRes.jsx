@@ -38,15 +38,21 @@ const SearchRes = () => {
         </button>
       </form>
 
-      <div className="sm:w-3/4 mx-auto sm:py-5 sm:px-2">
-        <div className="flex flex-col justify-center">
-          {filteredRes.map((res) => (
-            <Link key={res?.info.id} to={"/restaurant/" + res?.info.id}>
-              <SearchCard data={res} />
-            </Link>
-          ))}
+      {filteredRes.length !== 0 ? (
+        <div className="sm:w-3/4 mx-auto sm:py-5 sm:px-2">
+          <div className="flex flex-col justify-center">
+            {filteredRes.map((res) => (
+              <Link key={res?.info.id} to={"/restaurant/" + res?.info.id}>
+                <SearchCard data={res} />
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <p className="font-bold text-lg py-10 text-center">
+          Restaurant not found!
+        </p>
+      )}
     </div>
   );
 };

@@ -1,11 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import SearchIcon from "@mui/icons-material/Search";
 
 const Header = () => {
-  // const [btnNameReact, setbtnNameReact] = useState("Log In");
-
   const cart = useSelector((store) => store.cart);
 
   return (
@@ -37,15 +34,7 @@ const Header = () => {
             </NavLink>
           </li>
           <NavLink to="/login">
-            <button
-              className="px-4 py-1  bg-orange-400 rounded-lg text-white hover:bg-gray-100 hover:text-orange-400 "
-              // onClick={() => {
-              //   btnNameReact === "Log In"
-              //     ? setbtnNameReact("Log Out")
-              //     : setbtnNameReact("Log In");
-              // }}
-            >
-              {/* {btnNameReact} */}
+            <button className="px-4 py-1  bg-orange-400 rounded-lg text-white hover:bg-gray-100 hover:text-orange-400 ">
               Log In
             </button>
           </NavLink>
